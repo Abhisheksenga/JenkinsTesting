@@ -1,16 +1,28 @@
 pipeline {
     agent any
-    parameters {
-
-        choice(name: 'BRANCH', choices: ['master', 'release'], description: 'Select a branch')
-
-    }
     stages {
-        stage('Example') {
-            steps {
-                echo "Branch selected: ${params.BRANCH}"
-
-            }
+        
+        stage('Set Parameters') {
+             steps {
+                script { 
+                    properties([
+                        parameters([
+                            choice(
+                                choices: ['ONE', 'TWO'], 
+                                name: 'BRANCH',
+                                description: 'Select Branch for build'
+                            )])
+                        ])
+                }
+             }
         }
+        stage('Selected Branch') {
+            steps {
+                    sh """
+                    echo "deploy to production ${params.BRANCH}"
+                    """
+                }
+            }
+   }
     }
 }
