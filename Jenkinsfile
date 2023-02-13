@@ -8,7 +8,6 @@ pipeline {
     stages {
         stage('Example') {
             steps {
-                
                 echo "Branch selected: ${params.BRANCH}"
 
             }
