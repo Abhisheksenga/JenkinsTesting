@@ -2,7 +2,7 @@ pipeline {
     agent any
     stages {
         
-        stage('Set Parameters') {
+        stage('Set Parameters for selecting branch to build') {
              steps {
                 script { 
                     properties([
