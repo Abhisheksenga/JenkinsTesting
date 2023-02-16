@@ -1,5 +1,5 @@
 pipeline {
-    agent  { node { label !'Rcdn-Node11' } }
+   agent { node { label('!Rcdn-Node11') } } 
     stages {
         
         stage('Set Parameters for selecting branch to build') {
